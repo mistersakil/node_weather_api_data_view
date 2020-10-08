@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const request = require('request');
-const PORT = process.env.PORT || 1234;
+const port = process.env.PORT || 8000;
 const dynamicData = ({currentFileContent, apiData}) => {
   currentFileContent = currentFileContent.replace('{%city%}', apiData.name);
   currentFileContent = currentFileContent.replace('{%country%}', apiData.sys.country);
@@ -29,6 +29,6 @@ const server = http.createServer((req, res) => {
   }
 
 })
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`server running on port ${PORT}`);
+server.listen(port, '127.0.0.1', () => {
+  console.log(`server running on port ${port}`);
 });
