@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const request = require('request');
-const PORT = 1234;
+const PORT = process.env.PORT || 1234;
 const dynamicData = ({currentFileContent, apiData}) => {
   currentFileContent = currentFileContent.replace('{%city%}', apiData.name);
   currentFileContent = currentFileContent.replace('{%country%}', apiData.sys.country);
@@ -11,7 +11,7 @@ const dynamicData = ({currentFileContent, apiData}) => {
   currentFileContent = currentFileContent.replace('{%temperatureMax%}', (apiData.main.temp_max - 273).toFixed(2));
   return currentFileContent;
 }
-const sever = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
   if (req.url == "/") {
     const currentFile = './index.html';
     let currentFileContent = fs.readFileSync(currentFile, 'utf-8');
@@ -28,6 +28,7 @@ const sever = http.createServer((req, res) => {
       })
   }
 
-}).listen(PORT, () => {
+})
+server.listen(PORT, '127.0.0.1', () => {
   console.log(`server running on port ${PORT}`);
 });
