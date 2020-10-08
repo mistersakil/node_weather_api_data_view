@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  margin: 3%  auto 0;
+  padding: 0px;
+  width: 50%;
+  text-align: center;
+  background: #dde;
+  box-sizing: border-box;
+
+}
+.weather{
+  background: orange;
+  padding: 50px;
+  font-size: 30px;
+  color: blue;
+}
+.locatoin{
+  background: lightBlue;
+  padding: 50px;
+  font-size: 30px;
+}
+.temperature{
+  background: darkred;
+  padding: 50px;
+  font-size: 30px;
+  color: #fff;
+}
+sup{
+  font-size: 20px;
+    display: inline-block;
+    line-height: 27px;
+    margin: 0px 3px;
+    color: orange;
+
+}

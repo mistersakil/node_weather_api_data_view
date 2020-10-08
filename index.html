@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather api</title>
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      margin: 3% auto 0;
+      padding: 0px;
+      width: 50%;
+      text-align: center;
+      background: #dde;
+      box-sizing: border-box;
+
+    }
+
+    .weather {
+      background: orange;
+      padding: 50px;
+      font-size: 30px;
+      color: blue;
+    }
+
+    .locatoin {
+      background: lightBlue;
+      padding: 50px;
+      font-size: 30px;
+    }
+
+    .temperature {
+      background: darkred;
+      padding: 50px;
+      font-size: 30px;
+      color: #fff;
+    }
+
+    sup {
+      font-size: 20px;
+      display: inline-block;
+      line-height: 27px;
+      margin: 0px 3px;
+      color: orange;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="weather">
+      <h2>{%weatherStatus%}</h2>
+    </div>
+    <div class="locatoin">
+      <h2>{%city%}, {%country%}</h2>
+      <p id="date">Tuesday, 07 October, 2020</p>
+    </div>
+    <div class="temperature">
+      <h2>{%temperature%}&deg; C </h2>
+      <p>Min {%temperatureMin%}&deg; C | Max {%temperatureMax%}&deg; C </p>
+    </div>
+  </div>
+  <script>
+    const today = () => {
+      let today = new Date();
+      const days = getDays();
+      const months = getMonths();
+      let day = days[today.getDay()];
+      let date = today.getDate();
+      date = date <= 9 ? '0' + date : date;
+      let month = months[today.getMonth()];
+      let yearFull = today.getFullYear();
+      yearFull = yearFull <= 9 ? '0' + yearFull : yearFull;
+      return `${day}, ${date} ${month} ${yearFull}`
+    }
+    const getDays = () => {
+      return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    }
+    const getMonths = () => {
+      return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    }
+    date.innerHTML = today();
+  </script>
+  <!-- weather api key: a7c88228b3cf1a8d601e3cc8840153a9 -->
+  <!-- https://api.openweathermap.org/data/2.5/weather?q=Dhaka,bd&appid=a7c88228b3cf1a8d601e3cc8840153a9 -->
+
+</body>
+
+</html>
